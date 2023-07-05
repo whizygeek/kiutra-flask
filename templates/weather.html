@@ -1,0 +1,50 @@
+{% extends 'base.html' %} {% block title %} Weather {% endblock title %} {%
+block weather %}
+<div class="container mt-5 d-flex justify-content-center">
+  <form action="{{ url_for('weather') }}" method="POST">
+    <div class="input-group input-group-sm">
+      <input
+        type="text"
+        class="form-control"
+        name="city"
+        placeholder="Enter your city"
+      />
+      <div class="input-group-append">
+        <button class="btn btn-outline-dark" type="submit">Search</button>
+      </div>
+    </div>
+  </form>
+</div>
+  <div class="d-flex justify-content-center">
+    {% if error_message %}
+    <div class="alert alert-danger" role="alert">
+        {{ error_message }}
+    </div>
+    {% else %}
+    <div class="card bg-light text-center" style="width: 18rem;">
+      <h2 class="my-3">{{city_name}}</h2>
+      <div class="d-flex justify-content-center">
+        <img
+          src="http://openweathermap.org/img/w/{{icon}}.png"
+          class="card-img-top"
+          alt="Weather Icon"
+          style="max-width: 100px; height: auto;"
+        />
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Weather Details</h5>
+        <p class="card-text"><strong>Temperature:</strong> {{temp}}°C</p>
+        <p class="card-text"><strong>Atmosphere:</strong> {{atm}}</p>
+        <p class="card-text">
+          <strong>Min Temperature:</strong> {{min_temp}}°C
+        </p>
+        <p class="card-text">
+          <strong>Max Temperature:</strong> {{max_temp}}°C
+        </p>
+      </div>
+    </div>
+</div>
+{% endif %}
+  </div>
+  {% endblock weather%}
+</div>

@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% block title %} Home {% endblock title %} {% block
+body %}
+<div class="container my-3">
+  <h2>Update Tool Details</h2>
+  <form action="/update/{{tool.sno}}" method="POST">
+    <div class="mb-3">
+      <label for="title" class="form-label">Tool Title</label>
+      <input
+        type="text"
+        class="form-control"
+        name="title"
+        id="title"
+        value="{{tool.title}}"
+        aria-describedby="emailHelp"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="desc" class="form-label">Tool Measurement</label>
+      <input
+        type="text"
+        class="form-control"
+        value="{{tool.desc}}"
+        name="desc"
+        id="desc"
+      />
+      {% if custom_error %}
+      <div class="alert alert-danger" role="alert">{{ custom_error }}</div>
+      {% endif %}
+    </div>
+    <button type="submit" class="btn btn-outline-dark">Update</button>
+  </form>
+</div>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+  crossorigin="anonymous"
+></script>
+{% endblock body %}
